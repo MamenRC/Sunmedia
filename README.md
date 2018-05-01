@@ -38,10 +38,13 @@ TEST 2
 1.- El fragmento de código de nuestro fichero test.js nos devuelve un output no deseado. Queremos imprimir un valor incremental a cada segundo pero lo que nos devuelve el código es el mismo valor en cada iteración.
 Sin necesidad de ejecutar el código, ¿sabrías decirnos qué valor imprimiría por consola el script? ¿Cuál es el motivo?
 
-  5
+  5.
+
   El método setTimeout() del mixin WindowOrWorkerGlobalScope establece un temporizador que ejecuta una función o una porción de código después de que transcurre un tiempo, en este caso 1 segundo
 
 2.- Sabiendo que el output que buscamos es el que encuentras bajo estas líneas… ¿Cómo solucionarías el fragmento de código para que el output sea el deseado?
+
+
     > 0
     > 1
     > 2
@@ -53,3 +56,33 @@ Sin necesidad de ejecutar el código, ¿sabrías decirnos qué valor imprimiría
     for (var cont=0; cont<=4; cont++) {
       console.log(cont);
     }
+
+
+
+TEST 3
+
+En este caso, tenemos un código usando el objeto Promise (Promesa). Las promises (promesas) nos permiten manejar situaciones asíncronas en nuestras ejecuciones, pero tenemos un pequeño problema… No es una solución totalmente cross-browser. Sabemos que no funciona en Internet Explorer así que nos gustaría saber cómo modificarías nuestro código (test.js) para que funcione correctamente.
+
+
+    'use strict';
+
+    let promise = new Promise((resolve, reject) => {
+
+    // Llamamos a resolve(...) cuando lo que estabamos haciendo finaliza con éxito, y reject(...) cuando falla.
+    // En este ejemplo, usamos setTimeout(...) para simular código asíncrono.
+        setTimeout(function () {
+            if (Math.round(Math.random()) === 1) {
+                resolve("Success!");
+            } else {
+                reject("Fail!");
+            }
+        }, 1000);
+    });
+
+    promise
+        .then((successMessage) => {
+            console.log("Yes! " + successMessage);
+        })
+        .catch((failMessage) => {
+            console.log("No! " + failMessage);
+        });
