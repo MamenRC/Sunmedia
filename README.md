@@ -6,22 +6,26 @@ TEST 1
   {red: "#FF0000", green: "#00FF00", blue: "#0000FF", white: "#FFFFFF", black: "#000000"}
 
 2.- Modifica el código para que las variables rgb y wb mantengan sus valores iniciales y colors tenga los valores de ambas al finalizar la ejecución del script.
-    function test() {
 
-      var rgb = {
-          red: "#FF0000",
-          green: "#00FF00",
-          blue: "#0000FF"
-      };
+        function test() {
 
-      var wb = {
-          white: "#FFFFFF",
-          black: "#000000"
-      };
+          var rgb = {
+              red: "#FF0000",
+              green: "#00FF00",
+              blue: "#0000FF"
+          };
 
-      console.log(Object.assign(rgb, wb));
-    }
+          var wb = {
+              white: "#FFFFFF",
+              black: "#000000"
+          };
 
-    test();
+          console.log(Object.assign(rgb, wb));
+          var colors = Object.assign(rgb, wb);
+          console.log(colors);
+        }
+
+        test();
+
 
 3.- Además, tenemos un bug localizado en dispositivos con Internet Explorer… El código de nuestro script no funciona y necesitamos que se ejecute también en este navegador. ¿Sabrías identificar cuál es el problema? ¿Qué solución nos propones?
